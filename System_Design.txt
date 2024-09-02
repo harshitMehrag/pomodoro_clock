@@ -1,0 +1,88 @@
+SYSTEM ARCHITECUTE AND DESIGN:
+
+1. Frontend:
+User Interface (UI):
+Tech Stack: HTML, CSS, JavaScript (React for component-based architecture).
+Components: Login screen, timer display, control buttons (start, pause, reset), settings panel, and report view.
+Chrome Extension:
+Manifest File: Defines extension permissions and configurations.
+Popup UI and Options Page: Allows users to interact with the Pomodoro timer and configure settings.
+Widget:
+Embedded UI: Similar to the extension, embedded on websites or as a standalone widget.
+2. Backend Services:
+Authentication Service:
+User Authentication: Use OAuth (e.g., Google, GitHub) or a custom username/password system with JWT (JSON Web Tokens) for session management.
+API Endpoints:
+Timer API: Handles operations like starting, pausing, and resetting the timer.
+Report API: Stores session data and generates reports.
+Export API: Allows users to export reports in formats like CSV or PDF.
+Serverless Architecture: Use serverless functions (AWS Lambda, Google Cloud Functions, or Firebase Functions) to reduce costs and simplify backend management.
+3. Database:
+NoSQL Database: Use Firebase Firestore, MongoDB Atlas, or another NoSQL database for flexible schema management.
+Collections:
+Users: Stores user profiles and authentication details.
+Reports: Stores session data, including timestamps, durations, and types (work, break).
+Settings: User-specific settings for Pomodoro intervals and preferences.
+4. Storage and Syncing:
+Local and Cloud Storage:
+Local Storage: Store temporary session data and user settings locally.
+Cloud Sync: Sync critical data (reports, settings) with the cloud database for persistence and cross-device access.
+5. Notifications and Alarms:
+Notification API: Alerts for work/break transitions.
+Alarms API (Chrome Extension): Manages timing and ensures the timer runs even when the UI is closed.
+System Design Diagram:
+sql
+Copy code
++----------------------+            +------------------------+             
+|   Chrome Extension   |            |        Widget          |             
+|                      |            |                        |             
+| +------------------+ |            | +--------------------+ |             
+| |    Popup UI      | |            | |     Timer UI       | |             
+| +------------------+ |            | +--------------------+ |             
+| |   Options Page   | |            |                        |             
+| +------------------+ |            | +--------------------+ |             
+| | Background Script| |            | | Local Storage      | |             
+| +------------------+ |            | +--------------------+ |             
+| | Sync with Backend| |            | | Sync with Backend  | |             
+| +------------------+ |            | +--------------------+ |             
++----------------------+            +------------------------+             
+         |                                       |                         
+         +--------------------+------------------+                         
+                              |                                         
+                              v                                         
+                  +----------------------------+                         
+                  |      Authentication        |                         
+                  |      (OAuth, JWT)          |                         
+                  +----------------------------+                         
+                              |                                         
+                              v                                         
+                +-----------------------------+                         
+                |      Backend Services       |                         
+                |    (Serverless Functions)   |                         
+                +-----------------------------+                         
+                              |                                         
+        +-------------+--------+------------+                          
+        |             |                     |                         
+        v             v                     v                         
++------------+  +------------+       +-------------------+             
+| Timer API  |  | Report API |       |   Export API      |             
++------------+  +------------+       +-------------------+             
+        |             |                     |                         
+        v             v                     v                         
++--------------------------------------------------+                    
+|              Cloud Database (NoSQL)              |                    
+|                                                  |                    
+|  +---------+  +------------+   +---------------+ |                    
+|  |  Users  |  |  Reports   |   |   Settings    | |                    
+|  +---------+  +------------+   +---------------+ |                    
++--------------------------------------------------+                    
+Workflow:
+User Login: Users log in via OAuth or a custom authentication system. A session token is issued.
+Timer Operations: Timer functions (start, pause, reset) are handled on the frontend and synced with the backend for persistence.
+Report Generation and Storage: Session data is sent to the backend, where reports are generated and stored in the cloud database.
+Exporting Reports: Users can export their session data as CSV or PDF via the Export API.
+Data Syncing: All settings and reports are synced between the frontend and backend, allowing for cross-device access.
+Considerations for Learning and Zero Cost:
+Use Free Tiers: Leverage free tiers of cloud services like Firebase for authentication and database, or GitHub Actions for CI/CD.
+Minimize Backend Complexity: Use serverless functions to avoid managing servers and to keep costs down.
+Focus on Learning: Prioritize understanding each component's role and how they interact over advanced features to ensure a solid grasp of full-stack development.
