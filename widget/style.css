@@ -1,39 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #b35454;
+    font-family: 'Orbitron', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color:blanchedalmond;
+    overflow: scroll;
 }
 
-.container{
+/* General page style */
+.body {
+    width: inherit;
+    background-color: #b35454;
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    
+}
+
+/* Central timer container */
+.container {
+    background-color: #a4b0ab;
+    padding: 100px;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px wheat;
     text-align: center;
-    background: wheat;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-
+    width: 400px;
+    
+}
+.function
+{
+    padding: auto;
+    margin: 10;
+    height: 35;
+    bottom: 55px;
+    width: 400px;
+    margin-bottom: 60px;
+    
 }
 
-.timer{
-    font-size: 48px;
-    margin: 20px 0;
+.function-button
+{
+    font-size: medium;
+    color: #f0f0f0;
+    background-color: #b35454;
+    box-shadow: 0 10px 10px wheat;
+    
+}
+.function-button:hover{
+    background-color:  #b5c4be;
+}
+/* Timer display (25:00) */
+.timer-display {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 10px rgb(245, 184, 179);
+    font-size: 64px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    border: 2px solid #333;
 }
 
-.controls button {
+.timer-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    box-shadow:o 6px 10px #a99f9f;
+    border-color: #b35454;
+}
+
+/* Start and Reset buttons */
+button {
+    background-color: white;
+    border: 2px solid #333;
+    border-radius: 9px;
+    padding: 9px 18px;
     margin: 5px;
-    padding: 10px 20px;
     font-size: 16px;
+    box-shadow: 0 10px 10px rgb(245, 184, 179);
     cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #356136;
-    color: whitesmoke;
-    transition: background-color 0.6s;
+    
+    transition: background-color 0.2s;
 }
 
-.controls button:hover {
-    background-color: #529c56;
+button:hover {
+    background-color:#b35454;
 }
+
+/* Pushing effect on active (when clicked) */
+        button:active {
+            background-color: #b35454;/* Darker green when clicked */
+            box-shadow: 0 2px #666;    /* Reduce shadow to simulate push */
+            transform: translateY(4px); /* Move the button down */
+        }
